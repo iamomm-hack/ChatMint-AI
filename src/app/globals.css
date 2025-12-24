@@ -24,3 +24,241 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* =====================================
+   Web3 Nexus Sphere – Animation Only
+===================================== */
+
+.nexus-animation {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+  background: transparent;
+}
+
+
+/* Sphere */
+.nexus-sphere {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: nexusFloat 9s ease-in-out infinite;
+}
+
+/* Core Energy Core */
+.nexus-core {
+  position: absolute;
+  inset: 135px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at top left,
+    rgba(190,242,100,0.35),
+    rgba(15,23,42,0.95)
+  );
+  box-shadow:
+    0 0 120px rgba(190,242,100,0.5),
+    inset 0 0 40px rgba(255,255,255,0.15);
+  transform: translateZ(40px);
+}
+
+/* Rings */
+.nexus-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 0 35px rgba(190,242,100,0.2);
+  transform-style: preserve-3d;
+}
+
+/* Ring orientations */
+.ring-1 {
+  transform: rotateX(65deg);
+  animation: spinX 26s linear infinite;
+}
+
+.ring-2 {
+  transform: rotateY(65deg);
+  animation: spinY 32s linear infinite reverse;
+}
+
+.ring-3 {
+  transform: rotateZ(45deg);
+  animation: spinZ 38s linear infinite;
+}
+
+.ring-4 {
+  inset: 30px;
+  transform: rotateX(90deg);
+  animation: spinFlat 44s linear infinite;
+}
+
+/* Animations */
+@keyframes spinX {
+  from { transform: rotateX(65deg) rotateZ(0deg); }
+  to   { transform: rotateX(65deg) rotateZ(360deg); }
+}
+
+@keyframes spinY {
+  from { transform: rotateY(65deg) rotateZ(0deg); }
+  to   { transform: rotateY(65deg) rotateZ(360deg); }
+}
+
+@keyframes spinZ {
+  from { transform: rotateZ(45deg) rotateX(0deg); }
+  to   { transform: rotateZ(45deg) rotateX(360deg); }
+}
+
+@keyframes spinFlat {
+  from { transform: rotateX(90deg) rotateZ(0deg); }
+  to   { transform: rotateX(90deg) rotateZ(360deg); }
+}
+
+@keyframes nexusFloat {
+  0%, 100% {
+    transform: translateY(0) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-22px) rotateX(8deg);
+  }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .nexus-sphere,
+  .nexus-ring {
+    animation: none;
+  }
+}
+
+
+/* =================================================
+   Starry Background
+   ================================================= */
+
+.starry-bg {
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 80% 10%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 90% 40%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 33% 60%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 10% 80%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 40% 90%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 15% 50%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 75% 25%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(2px 2px at 45% 15%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 25% 85%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 85% 65%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(2px 2px at 55% 95%, rgba(255, 255, 255, 0.7), transparent);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  animation: twinkle 25s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Login Screen 3D Animation */
+.login-3d-container {
+  perspective: 1000px;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  opacity: 1;
+}
+
+.login-3d-cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: login-rotate-3d 20s linear infinite;
+}
+
+.login-3d-face {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 2px solid rgba(190, 242, 100, 0.2);
+  background: linear-gradient(135deg, rgba(190, 242, 100, 0.05), transparent);
+  backface-visibility: hidden;
+}
+
+.login-3d-front {
+  transform: rotateY(0deg) translateZ(150px);
+}
+
+.login-3d-back {
+  transform: rotateY(180deg) translateZ(150px);
+}
+
+.login-3d-right {
+  transform: rotateY(90deg) translateZ(150px);
+}
+
+.login-3d-left {
+  transform: rotateY(-90deg) translateZ(150px);
+}
+
+.login-3d-top {
+  transform: rotateX(90deg) translateZ(150px);
+}
+
+.login-3d-bottom {
+  transform: rotateX(-90deg) translateZ(150px);
+}
+
+@keyframes login-rotate-3d {
+  from {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(0deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .login-3d-container {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .login-3d-face {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .login-3d-front {
+    transform: rotateY(0deg) translateZ(100px);
+  }
+  
+  .login-3d-back {
+    transform: rotateY(180deg) translateZ(100px);
+  }
+  
+  .login-3d-right {
+    transform: rotateY(90deg) translateZ(100px);
+  }
+  
+  .login-3d-left {
+    transform: rotateY(-90deg) translateZ(100px);
+  }
+  
+  .login-3d-top {
+    transform: rotateX(90deg) translateZ(100px);
+  }
+  
+  .login-3d-bottom {
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+}
