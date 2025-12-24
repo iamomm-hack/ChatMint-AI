@@ -25,9 +25,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* =====================================
-   Web3 Nexus Sphere – Animation Only
-===================================== */
+/* Web3 Nexus Sphere*/
 
 .nexus-animation {
   width: 100%;
@@ -138,9 +136,7 @@ body {
 }
 
 
-/* =================================================
-   Starry Background
-   ================================================= */
+/* Starry Background*/
 
 .starry-bg {
   background-image: 
@@ -168,7 +164,7 @@ body {
   50% { opacity: 0.5; }
 }
 
-/* Login Screen 3D Animation */
+/* Login Screen Animation */
 .login-3d-container {
   perspective: 1000px;
   width: 300px;
